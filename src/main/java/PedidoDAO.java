@@ -35,12 +35,12 @@ public class PedidoDAO extends ConnectionDAO {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                Pedido pedido = new Pedido(
-                        rs.getString("formaPag"),
-                        rs.getInt("id_cliente")
-                );
 
+                Pedido pedido = new Pedido();
                 pedido.setId(rs.getInt("id"));
+                pedido.setFormaPag(rs.getString("formaPag"));
+                pedido.setId_cliente(rs.getInt("id_cliente"));
+
                 return pedido;
             }
 
@@ -104,12 +104,12 @@ public class PedidoDAO extends ConnectionDAO {
 
             while (rs.next()) {
 
-                Pedido pedido = new Pedido(
-                        rs.getString("formaPag"),
-                        rs.getInt("id_cliente")
-                );
+                Pedido pedido = new Pedido();
 
                 pedido.setId(rs.getInt("id"));
+                pedido.setFormaPag(rs.getString("formaPag"));
+                pedido.setId_cliente(rs.getInt("id_cliente"));
+
                 lista.add(pedido);
             }
         } catch (SQLException e) {
