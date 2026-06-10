@@ -12,7 +12,7 @@ public class FuncionarioDAO extends ConnectionDAO{
             pst.setString(2, funcionario.getCpf());
             pst.setString(3, funcionario.getRg());
             pst.setDouble(4, funcionario.getSalario());
-            pst.setDate(5, java.sql.Date.valueOf(funcionario.getDataNasc()));
+            pst.setDate(5, funcionario.getDataNasc());
             pst.setInt(6, funcionario.getIdade());
             pst.setString(7, funcionario.getTelefone());
             pst.setInt(8, funcionario.getIdDep());
@@ -64,7 +64,7 @@ public class FuncionarioDAO extends ConnectionDAO{
                 funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setRg(rs.getString("rg"));
                 funcionario.setSalario(rs.getDouble("salario"));
-                funcionario.setDataNasc(rs.getDate("datanasc").toLocalDate());
+                funcionario.setDataNasc(rs.getDate("dataNasc"));
                 funcionario.setIdade(rs.getInt("idade"));
                 funcionario.setTelefone(rs.getString("telefone"));
                 funcionario.setIdDep(rs.getInt("id_dep"));
@@ -94,7 +94,7 @@ public class FuncionarioDAO extends ConnectionDAO{
             pst.setString(2, funcionario.getCpf());
             pst.setString(3, funcionario.getRg());
             pst.setDouble(4, funcionario.getSalario());
-            pst.setDate(5, java.sql.Date.valueOf(funcionario.getDataNasc()));
+            pst.setDate(5, funcionario.getDataNasc());
             pst.setInt(6, funcionario.getIdade());
             pst.setString(7, funcionario.getTelefone());
             pst.setInt(8, funcionario.getIdDep());
@@ -150,7 +150,7 @@ public class FuncionarioDAO extends ConnectionDAO{
                 funcionario.setCpf(rs.getString("cpf"));
                 funcionario.setRg(rs.getString("rg"));
                 funcionario.setSalario(rs.getDouble("salario"));
-                funcionario.setDataNasc(rs.getDate("dataNasc").toLocalDate());
+                funcionario.setDataNasc(rs.getDate("dataNasc"));
                 funcionario.setIdade(rs.getInt("idade"));
                 funcionario.setTelefone(rs.getString("telefone"));
                 funcionario.setIdDep(rs.getInt("id_dep"));
