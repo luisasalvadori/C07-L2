@@ -37,14 +37,15 @@ public class ClienteDAO extends ConnectionDAO {
             rs = pst.executeQuery();
 
             if (rs.next()) {
-                Cliente cliente = new Cliente(
-                        rs.getString("nome"),
-                        rs.getInt("numero"),
-                        rs.getString("cep"),
-                        rs.getString("rua")
-                );
+
+                Cliente cliente = new Cliente();
 
                 cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setNumero(rs.getInt("numero"));
+                cliente.setRua(rs.getString("rua"));
+                cliente.setCep(rs.getString("cep"));
+
                 return cliente;
             }
 
@@ -110,15 +111,13 @@ public class ClienteDAO extends ConnectionDAO {
             rs = pst.executeQuery();
 
             while (rs.next()) {
-                Cliente cliente = new Cliente(
-                        rs.getString("nome"),
-                        rs.getInt("numero"),
-                        rs.getString("cep"),
-                        rs.getString("rua")
-                );
+                Cliente cliente = new Cliente();
 
                 cliente.setId(rs.getInt("id"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setNumero(rs.getInt("numero"));
                 cliente.setRua(rs.getString("rua"));
+                cliente.setCep(rs.getString("cep"));
 
                 clientes.add(cliente);
             }
