@@ -1,6 +1,4 @@
 import java.sql.*;
-import java.time.LocalDate;
-
 public class Funcionario {
 
     private int id;
@@ -8,7 +6,7 @@ public class Funcionario {
     private String cpf;
     private String rg;
     private double salario;
-    private LocalDate dataNasc;
+    private Date dataNasc;
     private int idade;
     private String telefone;
 
@@ -58,11 +56,11 @@ public class Funcionario {
         this.salario = salario;
     }
 
-    public LocalDate getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     }
 
