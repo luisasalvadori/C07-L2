@@ -420,19 +420,33 @@ public class Main {
                             f.setDataNasc(Date.valueOf(data));
                             System.out.println("Idade: ");
                             f.setIdade(sc.nextInt());
+                            sc.nextLine();
 
                             System.out.println("CPF: ");
                             f.setCpf(sc.nextLine());
+
                             System.out.println("RG: ");
                             f.setRg(sc.nextLine());
+
                             System.out.println("Telefone: ");
                             f.setTelefone(sc.nextLine());
+
                             System.out.println("Salario: ");
                             f.setSalario(sc.nextDouble());
+
                             System.out.println("ID do Departamento: ");
                             f.setIdDep(sc.nextInt());
-                            System.out.println("ID do Gerente: ");
-                            f.setIdGerente(sc.nextInt());
+
+                            System.out.println("ID do Gerente (0 para NULL): ");
+
+                            int gerente = sc.nextInt();
+
+                            if(gerente == 0){
+                                f.setIdGerente(null);
+                            }
+                            else{
+                                f.setIdGerente(gerente);
+                            }
                             if(funcionarioDAO.insert(f)){
                                 System.out.println("Funcionário inserido com sucesso!");
                             }
