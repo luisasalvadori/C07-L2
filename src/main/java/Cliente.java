@@ -5,13 +5,7 @@ public class Cliente {
     private String rua;
     private String cep;
 
-    public Cliente(String nome, int numero, String cep, String rua) {
-        this.nome = nome;
-        this.numero = numero;
-        this.cep = cep;
-        this.rua = rua;
-    }
-    public Cliente(){
+    public Cliente() {
 
     }
 
