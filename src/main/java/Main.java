@@ -1,8 +1,8 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.sql.*;
 public class Main {
     public static void main(String[] args) {
 
@@ -208,8 +208,25 @@ public class Main {
                         }
                         case 5 -> {
                             System.out.println("Insira o CEP: ");
-                            String cep = sc.nextLine();
-                            clienteDAO.searchByCep(cep);
+                            String cep = sc.next();
+
+                            List<Cliente> clientes = clienteDAO.searchByCep(cep);
+
+                            if(clientes.isEmpty()){
+                                System.out.println("Nenhum cliente encontrado.");
+                            } else {
+
+                                for(Cliente c : clientes){
+
+                                    System.out.println(
+                                            "ID: " + c.getId() +
+                                                    " | Nome: " + c.getNome() +
+                                                    " | Endereço: " + c.getRua() +
+                                                    ", " + c.getNumero() +
+                                                    " - " + c.getCep()
+                                    );
+                                }
+                            }
                         }
 
                     }
@@ -277,7 +294,22 @@ public class Main {
                         case 5 -> {
                             System.out.println("Insira a forma de pagamento: ");
                             String formpag = sc.nextLine();
-                            pedidoDAO.searchByFormaPag(formpag);
+                            List<Pedido> pedidos =
+                                    pedidoDAO.searchByFormaPag(formpag);
+                            if(pedidos.isEmpty()){
+
+                                System.out.println("Nenhum pedido encontrado.");
+                            } else {
+
+                                for(Pedido p : pedidos){
+
+                                    System.out.println(
+                                            "ID: " + p.getId() +
+                                                    " | Forma de Pagamento: " + p.getFormaPag() +
+                                                    " | ID Cliente: " + p.getId_cliente()
+                                    );
+                                }
+                            }
                         }
                     }
                 }
@@ -378,8 +410,14 @@ public class Main {
                             System.out.println("Nome: ");
                             f.setNome(sc.nextLine());
                             System.out.println("Data de nascimento (dd/MM/yyyy): ");
-                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                            f.setDataNasc(LocalDate.parse(sc.nextLine(), formatter));
+
+                            DateTimeFormatter formatter =
+                                    DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                            LocalDate data =
+                                    LocalDate.parse(sc.nextLine(), formatter);
+
+                            f.setDataNasc(Date.valueOf(data));
                             System.out.println("Idade: ");
                             f.setIdade(sc.nextInt());
 
@@ -411,10 +449,17 @@ public class Main {
                                 System.out.println("Novo nome: ");
                                 f.setNome(sc.nextLine());
                                 System.out.println("Nova data de nascimento (dd/MM/yyyy): ");
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                                f.setDataNasc(LocalDate.parse(sc.nextLine(), formatter));
+
+                                DateTimeFormatter formatter =
+                                        DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                                LocalDate data =
+                                        LocalDate.parse(sc.nextLine(), formatter);
+
+                                f.setDataNasc(Date.valueOf(data));
                                 System.out.println("Nova idade: ");
                                 f.setIdade(sc.nextInt());
+                                sc.nextLine();
 
                                 System.out.println("Novo CPF: ");
                                 f.setCpf(sc.nextLine());
@@ -424,10 +469,19 @@ public class Main {
                                 f.setTelefone(sc.nextLine());
                                 System.out.println("Novo salario: ");
                                 f.setSalario(sc.nextDouble());
+
                                 System.out.println("Novo ID do Departamento: ");
                                 f.setIdDep(sc.nextInt());
-                                System.out.println("Novo ID do Gerente: ");
-                                f.setIdGerente(sc.nextInt());
+                                System.out.println("Novo ID do Gerente (0 para NULL): ");
+
+                                int gerente = sc.nextInt();
+
+                                if(gerente == 0){
+                                    f.setIdGerente(null);
+                                }
+                                else{
+                                    f.setIdGerente(gerente);
+                                }
                                 if(funcionarioDAO.update(f)){
                                     System.out.println("Funcionário atualizado com sucesso!");
                                 }
@@ -464,9 +518,27 @@ public class Main {
                             }
                         }
                         case 5 -> {
-                            System.out.println("Insira o salário do funcionário: ");
-                            double salario = sc.nextInt();
-                            funcionarioDAO.searchSalarioMenorOuIgual(salario);
+
+                            System.out.println("Insira o salário máximo do funcionário: ");
+                            double salario = sc.nextDouble();
+
+                            List<Funcionario> funcionarios =
+                                    funcionarioDAO.searchSalarioMenorOuIgual(salario);
+                            if(funcionarios.isEmpty()){
+                                System.out.println("Nenhum funcionário encontrado.");
+                            } else {
+
+                                for(Funcionario f : funcionarios){
+
+                                    System.out.println(
+                                            "ID: " + f.getId() +
+                                                    " | Nome: " + f.getNome() +
+                                                    " | Salário: R$ " + f.getSalario() +
+                                                    " | CPF: " + f.getCpf() +
+                                                    " | RG: " + f.getRg()
+                                    );
+                                }
+                            }
                         }
                     }
 
