@@ -132,14 +132,14 @@ public class Main {
                 }
 
                 case 2 -> {
-                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Buscar por CEP | 6 - Buscar por Preço | 0 - Voltar");
+                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Buscar por CEP | 0 - Voltar");
                     System.out.println("Que operação será realizada?");
                     op2 = sc.nextInt();
                     sc.nextLine();
                 }
 
                 case 3 -> {
-                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Buscar por Forma de Pagamento | 6 - Buscar por Preço | 0 - Voltar");
+                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Buscar por Forma de Pagamento | 0 - Voltar");
                     System.out.println("Que operação será realizada?");
                     op2 = sc.nextInt();
                     sc.nextLine();
@@ -229,7 +229,7 @@ public class Main {
                 }
 
                 case 5 -> {
-                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Busca por Salário | 6 - Buscar por Preço | 0 - Voltar");
+                    System.out.println("1 - INSERT | 2 - UPDATE | 3 - SELECT | 4 - DELETE | 5 - Busca por Salário | 0 - Voltar");
                     System.out.println("Que operação será realizada?");
                     op2 = sc.nextInt();
                     sc.nextLine();
