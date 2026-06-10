@@ -3,13 +3,7 @@ public class Pedido {
     private String formaPag;
     private int id_cliente;
 
-    public Pedido(String formaPag, int id_cliente) {
-        this.formaPag = formaPag;
-        this.id_cliente = id_cliente;
-    }
-
-    public Pedido(){
-
+    public Pedido() {
     }
 
     public int getId() {
